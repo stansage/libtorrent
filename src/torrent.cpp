@@ -3052,8 +3052,7 @@ namespace libtorrent
 
 #endif
 
-	void torrent::announce_with_tracker(boost::uint8_t e
-		, address const& bind_interface)
+	void torrent::announce_with_tracker(boost::uint8_t e)
 	{
 		TORRENT_ASSERT(is_single_thread());
 		INVARIANT_CHECK;
@@ -3172,8 +3171,6 @@ namespace libtorrent
 				if (!ae.start_sent) req.event = tracker_request::started;
 				else if (!ae.complete_sent && is_seed()) req.event = tracker_request::completed;
 			}
-
-			req.bind_ip = bind_interface;
 
 			if (settings().get_bool(settings_pack::force_proxy))
 			{
@@ -3538,6 +3535,7 @@ namespace libtorrent
 		}
 		m_got_tracker_response = true;
 
+/*
 		// we're listening on an interface type that was not used
 		// when talking to the tracker. If there is a matching interface
 		// type in the tracker IP list, make another tracker request
@@ -3577,7 +3575,7 @@ namespace libtorrent
 				m_ses.queue_tracker_request(req, shared_from_this());
 			}
 		}
-
+*/
 		do_connect_boost();
 
 		state_updated();
