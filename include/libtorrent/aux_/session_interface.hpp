@@ -248,9 +248,6 @@ namespace libtorrent { namespace aux
 
 		virtual void prioritize_connections(boost::weak_ptr<torrent> t) = 0;
 
-		virtual tcp::endpoint get_ipv6_interface() const = 0;
-		virtual tcp::endpoint get_ipv4_interface() const = 0;
-
 		virtual void trigger_auto_manage() = 0;
 
 		virtual void apply_settings_pack(boost::shared_ptr<settings_pack> pack) = 0;
